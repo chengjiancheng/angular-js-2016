@@ -1,0 +1,27 @@
+export const DASHPAGE: any[] = 
+[{id:2,
+  language:'English',
+  dashBoard_topIssues: 'Top Issues',
+  dashBoard_issueSearch: 'Issue Search',
+  dashBoard_ongoingIssues: 'Ongoing Issue',
+  dashBoard_contactUs: 'Contact With Us',
+  dashBoard_id: 'id',
+  dashBoard_name: 'name',
+  dashBoard_email: 'email',
+  dashBoard_city: 'city',
+  dashBoard_building: 'building',
+  dashBoard_status: 'status'
+},
+{ id:1,
+  language:'中文',
+  dashBoard_topIssues: '主要问题',
+  dashBoard_issueSearch: '搜索问题',
+  dashBoard_ongoingIssues: '处理中的问题',
+  dashBoard_contactUs: '联系我们',
+  dashBoard_id: 'id',
+  dashBoard_name: '姓名',
+  dashBoard_email: '邮箱',
+  dashBoard_city: '城市',
+  dashBoard_building: '住宅',
+  dashBoard_status: '状态'
+}];
