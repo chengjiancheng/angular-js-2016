@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
+import { QUEUEPAGE } from './page-queue';
 
 @Component({
   moduleId: module.id,
@@ -11,6 +12,8 @@ import { HeroService } from './hero.service';
   styleUrls: ['queue.component.css']
 })
 export class QueueComponent implements OnInit {
+  page=QUEUEPAGE.find(page=>page.id == 1);
+  
   heroes: Hero[];
   selectedHero: Hero;
   addingHero = false;
@@ -51,6 +54,11 @@ export class QueueComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHeroes();
+
+    if(localStorage.getItem('wic_language') ){
+      let languageid=localStorage.getItem('wic_language');
+      this.page=QUEUEPAGE.find(page=>page.id == languageid);
+    }
   }
 
   onSelect(hero: Hero): void {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { DASHPAGE } from './page-dashboard';
 
 // import { HeroSearchService } from './hero-search.service';
 import { Engineer } from './hero';
@@ -19,6 +20,7 @@ export class EngineerListComponent implements OnInit {
   // heroes: Observable<Hero[]>;
   // private searchTerms = new Subject<string>();
 
+  page=DASHPAGE.find(page=>page.id == 1);
   constructor(
     private heroService: HeroService,
     private router: Router) { }
@@ -31,10 +33,16 @@ export class EngineerListComponent implements OnInit {
   ngOnInit(): void {
     this.heroService.getEngineers()
       .then(engineers => this.engineers = engineers);
+
+    if(localStorage.getItem('wic_language') ){
+      let languageid=localStorage.getItem('wic_language');
+      this.page=DASHPAGE.find(page=>page.id == languageid);
+    }
   }
 
   gotoDetail(engineer: Engineer): void {
     let link = ['/engineer', engineer.id];
     this.router.navigate(link);
   }
+  
 }

@@ -5,6 +5,7 @@ import { Subject } from 'rxjs/Subject';
 
 import { HeroSearchService } from './hero-search.service';
 import { Hero } from './hero';
+import { DASHPAGE } from './page-dashboard';
 
 @Component({
   moduleId: module.id,
@@ -16,6 +17,7 @@ import { Hero } from './hero';
 export class HeroSearchComponent implements OnInit {
   heroes: Observable<Hero[]>;
   private searchTerms = new Subject<string>();
+  page=DASHPAGE.find(page=>page.id == 1);
 
   constructor(
     private heroSearchService: HeroSearchService,
@@ -40,6 +42,11 @@ export class HeroSearchComponent implements OnInit {
         console.log(error);
         return Observable.of<Hero[]>([]);
       });
+
+      if(localStorage.getItem('wic_language') ){
+      let languageid=localStorage.getItem('wic_language');
+      this.page=DASHPAGE.find(page=>page.id == languageid);
+      }
   }
 
   gotoDetail(hero: Hero): void {

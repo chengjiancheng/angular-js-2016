@@ -1,5 +1,5 @@
-<h2>The latest ticket in processing is {{latestid}}</h2>
-<h2>Queue</h2>
+<h2>{{page.queue_topic}} {{latestid}}</h2>
+<h2>{{page.queue_h1}}</h2>
 <!--button (click)="addHero()">Add New Incident</button>
 <div *ngIf="addingHero">
   <my-hero-detail (close)="close($event)"></my-hero-detail>
@@ -7,16 +7,18 @@
 <div class="error" *ngIf="error">{{error}}</div>
 <div *ngIf="selectedHero">
   <h2>
-    {{selectedHero.name | uppercase}} is my hero
+    {{selectedHero.name | uppercase}} {{page.queue_h2}}
   </h2>
-  <button (click)="gotoDetail()">View Details</button>
+  <button (click)="gotoDetail()">{{page.queue_view}}</button>
 </div>
 <ul class="heroes">
   <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
     <span class="hero-element">
-      <span class="badge">{{hero.id}}</span><span class="badge">{{hero.status}}</span> {{hero.employee}} - {{hero.name}}
+      <span class="badge">{{hero.id}}</span>
+      <span class="badge">{{hero.status}}</span>
+      {{hero.employee}} - {{hero.name}}
     </span>
-    <button class="delete-button" (click)="deleteHero(hero, $event)">Cancel</button>
+    <button class="delete-button" (click)="deleteHero(hero, $event)"> {{page.queue_cancel}} </button>
   </li>
 </ul>
 

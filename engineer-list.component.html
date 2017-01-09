@@ -1,8 +1,15 @@
 <div id="engineer-list">
-<h3>Contact With Us</h3>
+<h3> {{page.dashBoard_contactUs}} </h3>
 <table class="grid grid-pad">
   <thead>
-        <tr><th>id</th><th>name</th><th>email</th><th>city</th><th>building</th><th>status</th></tr>
+        <tr>
+        <th>{{page.dashBoard_id}}</th>
+        <th>{{page.dashBoard_name}}</th>
+        <th>{{page.dashBoard_email}}</th>
+        <th>{{page.dashBoard_city}}</th>
+        <th>{{page.dashBoard_building}}</th>
+        <th>{{page.dashBoard_status}}</th>
+        </tr>
     </thead>
   <tr *ngFor="let engineer of engineers" (click)="gotoContact(engineer)" >
     <td class="module hero">

@@ -49,4 +49,13 @@ export class AppComponent implements OnInit{
     this.page=APPPAGE.find(page=>page.id == selectedLanguage.id);
     location.reload();
   }
+    //jason test
+    
+   updateStatusType(selectedStatusType:any): void {
+    console.log(selectedStatusType);
+    localStorage.setItem('wic_status', selectedStatusType.id);
+    this.status=APPPAGE.find(status=>status.id == selectedStatusType.id);
+    location.reload();
+  }
+  
 }

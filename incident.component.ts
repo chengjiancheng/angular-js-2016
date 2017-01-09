@@ -4,6 +4,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Hero,Engineer } from './hero';
 import { HeroService } from './hero.service';
 import { STATUSTYPE } from './mock-data';
+import { STATUSTYPE2 } from './mock-data';
+import { INCIDENTPAGE } from './page-incident';
 
 @Component({
   moduleId: module.id,
@@ -12,6 +14,10 @@ import { STATUSTYPE } from './mock-data';
   styleUrls: ['incident.component.css']
 })
 export class IncidentComponent implements OnInit {
+  page = INCIDENTPAGE.find(page=>page.id == 1);
+  statusType = STATUSTYPE.find(statusType=>statusType.id == 1);
+
+
   @Input() hero: Hero;
   @Output() close = new EventEmitter();
   error: any;
@@ -19,13 +25,24 @@ export class IncidentComponent implements OnInit {
   engineers:Engineer[];
   selectedAssignee :any = 0;
   selectedStatus :any = 0;
-  statustype = STATUSTYPE;
+  //statustype = STATUSTYPE;
+  //stautstype = STATUSTYPE2;   
   constructor(
     private heroService: HeroService,
     private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem('wic_language') ){
+      let languageid=localStorage.getItem('wic_language');
+      this.page=INCIDENTPAGE.find(page=>page.id == languageid);
+    }
+
+    if(localStorage.getItem('wic_statusType') ){
+      let statusTypeid=localStorage.getItem('wic_statusType');
+      this.statusType=STATUSTYPE.find(statusType=>statusType.id == statusTypeid);
+    }
+
     this.route.params.forEach((params: Params) => {
       if (params['id'] !== undefined) {
         let id = +params['id'];

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
+import { DASHPAGE } from './page-dashboard';
 
 @Component({
   moduleId: module.id,
@@ -11,6 +12,8 @@ import { HeroService } from './hero.service';
   styleUrls: ['dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  page=DASHPAGE.find(page=>page.id == 1);
+
   heroes: Hero[] = [];
   workingheroes: Hero[] = [];
 
@@ -18,8 +21,13 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private heroService: HeroService) {
   }
-
+ 
   ngOnInit(): void {
+     if(localStorage.getItem('wic_language') ){
+      let languageid=localStorage.getItem('wic_language');
+      this.page=DASHPAGE.find(page=>page.id == languageid);
+    }
+    
     this.heroService.getHeroes()
       // .then(heroes => this.heroes = heroes.slice(0, 6));
       .then(heroes => 

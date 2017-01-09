@@ -1,6 +1,6 @@
-<h2>The latest ticket in processing is {{latestid}}</h2>
-<h2>My Ticket List</h2>
-<button (click)="addHero()">Add New Incident</button>
+<h2> {{page.heroes_h1}} {{latestid}} </h2>
+<h2> {{page.heroes_h2}} </h2>
+<button (click)="addHero()"> {{page.heroes_button}} </button>
 <div *ngIf="addingHero">
   <my-hero-detail (close)="close($event)"></my-hero-detail>
 </div>

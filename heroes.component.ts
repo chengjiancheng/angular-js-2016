@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
+import { HEROESPAGE } from './page-heroes';
 
 @Component({
   moduleId: module.id,
@@ -11,6 +12,8 @@ import { HeroService } from './hero.service';
   styleUrls: ['heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
+  page=HEROESPAGE.find(page=>page.id == 1);
+
   heroes: Hero[];
   selectedHero: Hero;
   addingHero = false;
@@ -51,6 +54,11 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHeroes();
+
+    if(localStorage.getItem('wic_language') ){
+      let languageid=localStorage.getItem('wic_language');
+      this.page=HEROESPAGE.find(page=>page.id == languageid);
+    }
   }
 
   onSelect(hero: Hero): void {

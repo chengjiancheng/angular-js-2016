@@ -1,4 +1,4 @@
-<h3>Top Issues</h3>
+<h3>{{page.dashBoard_topIssues}}</h3>
 <div class="grid grid-pad">
   <div *ngFor="let hero of heroes" (click)="gotoDetail(hero)" class="col-1-4">
     <div class="module hero">
@@ -7,7 +7,7 @@
   </div>
 </div>
 <hero-search></hero-search>
-<h3>Ongoing Issues</h3>
+<h3>{{page.dashBoard_ongoingIssues}}</h3>
 <div class="grid grid-pad">
   <div *ngFor="let hero of workingheroes" (click)="gotoDetail(hero)" class="col-1-4">
     <div class="module hero">

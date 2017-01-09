@@ -4,6 +4,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
 import { CATEGORIES } from './mock-data';
+import { HERODETPAGE } from './page-herodetail';
 
 @Component({
   moduleId: module.id,
@@ -12,6 +13,8 @@ import { CATEGORIES } from './mock-data';
   styleUrls: ['hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
+  page=HERODETPAGE.find(page=>page.id == 1);
+
   @Input() hero: Hero;
   @Output() close = new EventEmitter();
   error: any;
@@ -30,6 +33,11 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
+      if(localStorage.getItem('wic_language') ){
+      let languageid=localStorage.getItem('wic_language');
+      this.page=HERODETPAGE.find(page=>page.id == languageid);
+      }
+
       if (params['id'] !== undefined) {
         let id = +params['id'];
         this.navigated = true;
@@ -40,10 +48,12 @@ export class HeroDetailComponent implements OnInit {
         this.hero = new Hero();
         this.hero.employee = JSON.parse(localStorage.getItem('id_token')).employee;
         this.hero.email = JSON.parse(localStorage.getItem('id_token')).email;
-        this.hero.status = 'new';
+        this.hero.status = "{{page.heroDet_status}}";
         this.hero.statuscode = 0;
       }
     });
+
+    
   }
 
   save(): void {

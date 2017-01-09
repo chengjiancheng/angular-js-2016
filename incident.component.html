@@ -1,21 +1,21 @@
 <div *ngIf="hero">
-  <h2>{{hero.name}} details!</h2>
+  <h2>{{hero.name}}{{page.incident_h1}}!</h2>
   <div>
     <label>id: </label>{{hero.id}}</div>
   <div>
-    <label>employee: </label>
+    <label> {{page.incident_employee}}: </label>
     <input [(ngModel)]="hero.employee" placeholder="employee" readonly="readonly"/>
   </div>
   <div>
-    <label>email: </label>
+    <label> {{page.incident_email}}: </label>
     <input [(ngModel)]="hero.email" placeholder="email" readonly="readonly"/>
   </div>
   <div>
-    <label>name: </label>
+    <label> {{page.incident_name}}: </label>
     <input [(ngModel)]="hero.name" placeholder="name" readonly="readonly"/>
   </div>
   <div>
-    <label>assignee: </label>
+    <label> {{page.incident_assignee1}}: </label>
       <select class="form-control" name="sel" 
         [(ngModel)]="selectedAssignee" 
         (ngModelChange)="updateAssignee($event)">
@@ -26,19 +26,19 @@
       </select>
   </div>
    <div>
-    <label>assigneeid: </label>
+    <label> {{page.incident_assigneeid}}: </label>
     <input [(ngModel)]="hero.assigneeid" placeholder="assigneeid" readonly="readonly" />
   </div>
   <div>
-    <label>assignee: </label>
+    <label> {{page.incident_assignee2}}: </label>
     <input [(ngModel)]="hero.assignee" placeholder="assignee" readonly="readonly" />
   </div>
   <div>
-    <label>reply: </label>
+    <label> {{page.incident_reply}}: </label>
     <input [(ngModel)]="hero.reply" placeholder="reply" />
   </div>
   <div>
-    <label>status: </label>
+    <label> {{page.incident_status}}: </label>
     <select class="form-control" name="sel" 
         [(ngModel)]="selectedStatus" 
         (ngModelChange)="updateStatus($event)">
@@ -48,6 +48,6 @@
       </option>
       </select>
   </div>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
+  <button (click)="goBack()"> {{page.incident_back}} </button>
+  <button (click)="save()"> {{page.incident_save}} </button>
 </div>

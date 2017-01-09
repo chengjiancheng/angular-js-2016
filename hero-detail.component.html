@@ -1,10 +1,12 @@
 <div *ngIf="hero">
-  <h2>{{hero.name}} details!</h2>
+  <div>
+  <h2>{{hero.name}} {{page.heroDet_h1}}!</h2>
+  </div>
   <div>
     <label>id: </label>{{hero.id}}
   </div>
   <div>
-    <label>category: </label>
+    <label>{{page.heroDet_category}} </label>
       <select class="form-control" name="sel" 
         [(ngModel)]="selectedCategory" 
         (ngModelChange)="updateCategory($event)">
@@ -15,7 +17,7 @@
       </select>
   </div>
   <div>
-    <label>area: </label>
+    <label>{{page.heroDet_area}}: </label>
       <select class="form-control" name="sel" 
         [(ngModel)]="selectedArea" 
         (ngModelChange)="updateArea($event)">
@@ -26,7 +28,7 @@
       </select>
   </div>
   <div>
-    <label>subarea: </label>
+    <label>{{page.heroDet_subarea}}: </label>
       <select class="form-control" name="sel" 
         [(ngModel)]="selectedSubArea" 
         (ngModelChange)="updateSubArea($event)">
@@ -37,33 +39,33 @@
       </select>
   </div>
   <div>
-    <label>employee: </label>
-    <input [(ngModel)]="hero.employee" placeholder="employee" readonly="readonly"/>
+    <label> {{page.heroDet_employee}}: </label>
+    <input [(ngModel)]="hero.employee" placeholder="{{page.heroDet_employee}}" readonly="readonly"/>
   </div>
   <div>
-    <label>email: </label>
-    <input [(ngModel)]="hero.email" placeholder="email" readonly="readonly"/>
+    <label> {{page.heroDet_email}}: </label>
+    <input [(ngModel)]="hero.email" placeholder="{{page.heroDet_email}}" readonly="readonly"/>
   </div>
   <div>
-    <label>name: </label>
-    <input [(ngModel)]="hero.name" placeholder="name" />
+    <label> {{page.heroDet_name}}: </label>
+    <input [(ngModel)]="hero.name" placeholder="{{page.heroDet_name}}" />
   </div>
    <div>
-    <label>assigneeid: </label>
-    <input [(ngModel)]="hero.assigneeid" placeholder="assigneeid" readonly="readonly" />
+    <label> {{page.heroDet_assigneeid}}: </label>
+    <input [(ngModel)]="hero.assigneeid" placeholder="{{page.heroDet_assigneeid}}" readonly="readonly" />
   </div>
   <div>
-    <label>assignee: </label>
-    <input [(ngModel)]="hero.assignee" placeholder="assignee" readonly="readonly" />
+    <label> {{page.heroDet_assignee}}: </label>
+    <input [(ngModel)]="hero.assignee" placeholder="{{page.heroDet_assignee}}" readonly="readonly" />
   </div>
   <div>
-    <label>reply: </label>
-    <input [(ngModel)]="hero.reply" placeholder="reply" readonly="readonly" />
+    <label> {{page.heroDet_reply}}: </label>
+    <input [(ngModel)]="hero.reply" placeholder="{{page.heroDet_reply}}" readonly="readonly" />
   </div>
   <div>
-    <label>status: </label>
-    <input [(ngModel)]="hero.status" placeholder="status" readonly="readonly" />
+    <label> {{page.heroDet_status}}: </label>
+    <input [(ngModel)]="hero.status" placeholder="{{page.heroDet_status}}" readonly="readonly" />
   </div>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
+  <button (click)="goBack()"> {{page.heroDet_back}} </button>
+  <button (click)="save()"> {{page.heroDet_save}} </button>
 </div>

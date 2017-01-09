@@ -1,8 +1,9 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { Engineer } from './hero';
 import { HeroService } from './hero.service';
+import { ENTERPAGE } from './page-enter';
 // import { contentHeaders } from '../common/headers';
 
 @Component({
@@ -10,11 +11,20 @@ import { HeroService } from './hero.service';
   templateUrl: 'app/enter.component.html',
   styleUrls: [ 'app/enter.component.css' ]
 })
-export class EnterComponent {
+export class EnterComponent implements OnInit {
+  page=ENTERPAGE.find(page=>page.id == 1);
+
   engineer: Engineer;
   error: any;
   
   constructor(private heroService: HeroService,public router: Router, public http: Http) {
+  }
+
+  ngOnInit(): void {
+    if(localStorage.getItem('wic_language') ){
+      let languageid=localStorage.getItem('wic_language');
+      this.page=ENTERPAGE.find(page=>page.id == languageid);
+    }
   }
 
   enter(event: any,city:string, building:string, name:string, password:string) {
